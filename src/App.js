@@ -3,25 +3,41 @@ import { Component } from 'react';
 
 class App extends Component {
   state = {
-    posts: [
-      {
-        id: 1,
-        title: "title 1",
-        body: "body 1",
-      },
+    posts: []   
+  }
 
-      {
-        id: 2,
-        title: "title 2",
-        body: "body 2",
-      },
+  componentDidMount() {
+    console.log("Componente montado")
+    
+    this.setState({
+      posts: [
+        {
+          id: 1,
+          title: "title 1",
+          body: "body 1",
+        },
+  
+        {
+          id: 2,
+          title: "title 2",
+          body: "body 2",
+        },
+  
+        {
+          id: 3,
+          title: "title 3",
+          body: "body 3",
+        },
+      ]
+    })
+  }
 
-      {
-        id: 3,
-        title: "title 3",
-        body: "body 3",
-      },
-    ]   
+  componentDidUpdate() {
+
+  }
+  
+  componentWillUnmount() {
+
   }
 
   render() {
