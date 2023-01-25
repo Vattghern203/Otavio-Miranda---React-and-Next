@@ -43,8 +43,8 @@ describe('<Button />', () => {
     })
 
     it('should match the snapshot', () => {
-        const fn = jest.fn()
         const { container } = render(<Button text="load more" disabled={false} />)
+        // eslint-disable-next-line testing-library/no-node-access
         expect(container.firstChild).toMatchSnapshot()
     })
 })
