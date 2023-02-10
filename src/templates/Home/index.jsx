@@ -1,6 +1,6 @@
 import './styles.css';
 
-import { Component } from 'react';
+import { Component, React } from 'react';
 
 import { loadPosts } from '../../utils/load-post';
 import { Posts } from '../../components/Posts';
@@ -17,16 +17,16 @@ export class Home extends Component {
   }
 
   async componentDidMount() {
-    
+
     await this.loadPosts()
   }
-    
+
   loadPosts = async () => {
     const { page, postsPerPage } = this.state
-    
+
     const postsAndPhotos = await loadPosts()
 
-    this.setState({ 
+    this.setState({
       posts: postsAndPhotos.slice(page, postsPerPage),
       allPosts: postsAndPhotos,
     })
@@ -71,11 +71,11 @@ export class Home extends Component {
 
     const noMorePosts = page + postsPerPage >= allPosts.length
 
-    const filteredPosts = !!searchValue ?
+    const filteredPosts = searchValue ?
     allPosts.filter(post => {
       return post.title.toLowerCase().includes(searchValue.toLowerCase())
     })
-    : 
+    :
     posts
 
     return (
@@ -83,7 +83,7 @@ export class Home extends Component {
         <div className='search-container'>
 
           {!!searchValue && (
-            
+
             <h1>Search Value: {searchValue}</h1>
           )}
 
@@ -95,23 +95,23 @@ export class Home extends Component {
         </div>
 
         {filteredPosts.length > 0 && (
-          
+
           <Posts posts={filteredPosts} />
         )}
 
         {filteredPosts.length === 0 && (
           <p>Não existem posts :/</p>
         )}
-      
+
         <div className='button-container'>
 
           {!searchValue && (
             <Button
-  
+
               text="Load more"
               onClick={this.loadMorePosts}
               disabled={noMorePosts}
-            
+
             />
           )}
         </div>

@@ -1,6 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+/* eslint-disable no-undef */
+import { render, screen } from "@testing-library/react"
 import { Button } from '.'
 import userEvent from "@testing-library/user-event";
+import React from "react";
+
 
 describe('<Button />', () => {
     it('should render the button with the text "load more"', () => {
@@ -9,7 +12,7 @@ describe('<Button />', () => {
         expect.assertions(1)
 
         const button = screen.getByRole('button', { name: /load more/i })
-        expect(button).toBeInTheDocument()  
+        expect(button).toBeInTheDocument()
     })
 
     it('should call a function on button click', () => {
@@ -30,7 +33,7 @@ describe('<Button />', () => {
         render(<Button text="Load More" disabled={true} />)
 
         const button = screen.getByRole('button', { name: /load more/i})
-        
+
         expect(button).toBeDisabled()
     })
 
@@ -38,13 +41,13 @@ describe('<Button />', () => {
         render(<Button text="Load More" disabled={false} />)
 
         const button = screen.getByRole('button', { name: /load more/i})
-        
+
         expect(button).toBeEnabled()
     })
 
     it('should match the snapshot', () => {
-        const { container } = render(<Button text="load more" disabled={false} />)
-        // eslint-disable-next-line testing-library/no-node-access
+        const { container } = render(<Button text="load more" disabled={false}/>)
+
         expect(container.firstChild).toMatchSnapshot()
     })
 })
